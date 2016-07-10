@@ -12,6 +12,8 @@ reps <- 100
 rho <- 1
 
 parameters_table <- 'parameters'
+p_table <- 'p_values'
+
 parameter_list <- list(boot_dist = boot_dist, t = t, G = G, ng = ng, rho = rho)
 db_write_param(db = db, table = parameters_table, parameters = parameter_list)
 
@@ -23,7 +25,7 @@ apply(X = parameters,
       MARGIN = 1,
       FUN = db_write_mc,
       db = db,
-      table = table,
+      table = p_table,
       reps = reps,
       dgp = dgp,
       formula = formula,
