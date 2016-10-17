@@ -59,7 +59,7 @@ stat_func <- function(data, formula, x_interest, clusterby, boot_dist, boot_reps
 
 rand_func <- multiway_DGP
 
-reps <- 10000
+reps <- 1000
 names <- c('ols', 'crve_HG', 'crve_G', 'crve_H', 'multiway_comb', 'multiway_min', 'multiwayboot')
 progbar <- TRUE
 cores <- 3
@@ -74,7 +74,7 @@ results_table <- cbind(clustetby = as.character(clusterby)[2], boot_dist = boot_
                        num_dims = num_dims, H = groups[1], G = groups[2], mc_result$stat)
 
 db_name <- 'multiway.db'
-table_name <- 'twoway_cluster_1016'
+table_name <- 'twoway_cluster'
 
 conn <- DBI::dbConnect(RSQLite::SQLite(), db_name)
 DBI::dbWriteTable(conn = conn, name = table_name, value = results_table, append = TRUE)
